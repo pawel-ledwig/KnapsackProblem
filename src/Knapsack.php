@@ -42,8 +42,10 @@ class Knapsack
     {
         $total_weight = 0.0;
 
-        foreach ($this->knapsack_items as $id => $item) {
-            $total_weight += $item['weight'];
+        if (is_array($this->knapsack_items)) {
+            foreach ($this->knapsack_items as $id => $item) {
+                $total_weight += $item['weight'];
+            }
         }
 
         return $total_weight;
@@ -57,8 +59,10 @@ class Knapsack
     {
         $total_value = 0.0;
 
-        foreach ($this->knapsack_items as $id => $item) {
-            $total_value += $item['value'];
+        if (is_array($this->knapsack_items)) {
+            foreach ($this->knapsack_items as $id => $item) {
+                $total_value += $item['value'];
+            }
         }
 
         return $total_value;
