@@ -3,7 +3,19 @@
 
 class FileLoader
 {
+    /**
+     * @var - string with path of a file with items data
+     */
     private $filepath;
+
+    /**
+     * @var - array which contains all items from file.
+     * Array structure:
+     * array[item_id] => array(
+     *      'weight' => item_weight,
+     *      'value' => item_value,
+     * );
+     */
     private $items_data;
 
     public function __construct($filepath)
