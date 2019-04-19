@@ -10,4 +10,8 @@ class CustomAutoloader
 
         spl_autoload($path . '/' . $class_name);
     }
+
+    public static function loadStartupClasses($class_name){
+        spl_autoload($class_name);
+    }
 }
