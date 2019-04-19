@@ -54,4 +54,9 @@ class FileLoader
             }
         }
     }
+
+    public function getItemsData(): array
+    {
+        return $this->items_data;
+    }
 }
