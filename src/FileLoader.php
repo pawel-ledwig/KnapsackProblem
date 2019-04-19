@@ -38,10 +38,13 @@ class FileLoader
         // Skip first line of a file (header with column names)
         fgets($file_handler);
 
+        $line_counter = 1;
+
         // For each next line of a file
         while (!feof($file_handler)) {
             $line = fgets($file_handler);
             $array = explode(";", $line);
+            $line_counter++;
 
             // Check if CSV line has all required columns
             if (sizeof($array) === CSV_COLUMNS) {
@@ -50,7 +53,7 @@ class FileLoader
                     'value' => intval($array[2]),
                 );
             } else {
-                echo "Malformed csv line: $line\nProceeding with next line.\n";
+                echo "Skipping malformed csv line $line_counter.\n";
             }
         }
     }
