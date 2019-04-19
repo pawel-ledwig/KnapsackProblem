@@ -13,9 +13,9 @@ class Knapsack
 
     /**
      * Get maximum capacity of the knapsack
-     * @return mixed
+     * @return float
      */
-    public function getCapacity()
+    public function getCapacity(): float
     {
         return $this->capacity;
     }
@@ -26,7 +26,7 @@ class Knapsack
      * @param $item_weight
      * @param $item_value
      */
-    public function addItem($item_id, $item_weight, $item_value)
+    public function addItem($item_id, $item_weight, $item_value): void
     {
         $this->knapsack_items[$item_id] = array(
             'weight' => $item_weight,
@@ -38,10 +38,11 @@ class Knapsack
      * Calculate current weight of the knapsack
      * @return float
      */
-    public function getKnapsackWeight(){
+    public function getKnapsackWeight(): float
+    {
         $total_weight = 0.0;
 
-        foreach ($this->knapsack_items as $id => $item){
+        foreach ($this->knapsack_items as $id => $item) {
             $total_weight += $item['weight'];
         }
 
@@ -52,10 +53,11 @@ class Knapsack
      * Calculate current value of all items in the knapsack
      * @return float
      */
-    public function getKnapsackValue(){
+    public function getKnapsackValue(): float
+    {
         $total_value = 0.0;
 
-        foreach ($this->knapsack_items as $id => $item){
+        foreach ($this->knapsack_items as $id => $item) {
             $total_value += $item['value'];
         }
 
