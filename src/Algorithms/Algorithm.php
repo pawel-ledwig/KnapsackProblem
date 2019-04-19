@@ -12,5 +12,5 @@ abstract class Algorithm
         $this->item_data = $item_data;
     }
 
-    abstract public function calculateKnapsack(): Knapsack;
+    abstract public function fillKnapsack(): Knapsack;
 }

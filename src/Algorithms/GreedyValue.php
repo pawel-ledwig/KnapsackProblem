@@ -9,7 +9,11 @@ class GreedyValue extends Algorithm
         parent::__construct($capacity, $item_data);
     }
 
-    public function calculateKnapsack(): Knapsack
+    /**
+     * Method used to fill knapsack - choose best items using greedy algorithm with highest value criteria.
+     * @return Knapsack
+     */
+    public function fillKnapsack(): Knapsack
     {
 
     }
