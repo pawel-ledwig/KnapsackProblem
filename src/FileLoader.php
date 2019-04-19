@@ -55,6 +55,10 @@ class FileLoader
         }
     }
 
+    /**
+     * Get array with data of all items
+     * @return array
+     */
     public function getItemsData(): array
     {
         return $this->items_data;
