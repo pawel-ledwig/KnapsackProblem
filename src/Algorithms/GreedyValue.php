@@ -15,6 +15,18 @@ class GreedyValue extends Algorithm
      */
     public function fillKnapsack(): Knapsack
     {
+        uasort($this->item_data, function ($a, $b) {
+            return $b['value'] <=> $a['value'];
+        });
 
+        $knapsack = new Knapsack($this->capacity);
+
+        foreach ($this->item_data as $id => $item) {
+            if ($item['weight'] + $knapsack->getKnapsackWeight() <= $knapsack->getCapacity()) {
+                $knapsack->addItem($id, $item['weight'], $item['value']);
+            }
+        }
+
+        return $knapsack;
     }
 }
