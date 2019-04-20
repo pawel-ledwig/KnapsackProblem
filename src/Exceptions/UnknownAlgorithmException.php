@@ -13,6 +13,6 @@ class UnknownAlgorithmException extends Exception
     }
 
     public function errorMessage(){
-        return "Unknown algorithm number: -$this->arg";
+        return "Unknown algorithm number: $this->arg";
     }
 }
