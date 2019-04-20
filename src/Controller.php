@@ -35,6 +35,10 @@ class Controller
                     $algorithm = new GreedyWeight($this->capacity, $items_data);
                     $this->knapsack = $algorithm->fillKnapsack();
                     break;
+                case 2:
+                    $algorithm = new GreedyRatio($this->capacity, $items_data);
+                    $this->knapsack = $algorithm->fillKnapsack();
+                    break;
                 default:
                     throw new UnknownAlgorithmException($this->algorithm);
                     break;
