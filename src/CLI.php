@@ -58,10 +58,8 @@ class CLI
 
                 // check if an option is supported
                 if ($this->isOptionSupported($arg_name)) {
-                    $option_name = $this->getOptionName($arg_name);
-
                     try {
-                        $this->parseOption($this->params, $option_name, $i);
+                        $this->parseOption($this->params, $arg_name, $i);
                     } catch (MissingArgumentException $e) {
                         $this->printMessage($e->errorMessage());
                         return false;
@@ -84,18 +82,20 @@ class CLI
         return strlen($arg_name) == 1 ? $this->shortcuts[$arg_name] : $arg_name;
     }
 
-    private function parseOption(array $params, string $option_name, int $i): void
+    private function parseOption(array $params, string $arg_name, int $i): void
     {
+        $option_name = $this->getOptionName($arg_name);
+
         // if there is no more arguments but option value is required
         if ($i + 1 >= sizeof($params) && $this->options[$option_name]) {
-            throw new MissingArgumentException($option_name);
+            throw new MissingArgumentException($arg_name);
         }
 
         $value = $params[$i + 1];
 
         // if there is an option in place of value of previous option, but value of previous option is required
         if ($value[0] == '-' && $this->options[$option_name]) {
-            throw new MissingArgumentException($option_name);
+            throw new MissingArgumentException($arg_name);
         }
 
         switch ($option_name) {
