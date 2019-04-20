@@ -10,7 +10,7 @@ class GreedyWeight extends Algorithm
     }
 
     /**
-     * Method used to fill knapsack - choose best items using greedy algorithm with lowest weight criteria.
+     * Method used to fill knapsack - choose best items using greedy algorithm with lowest weight criterion.
      * @return Knapsack
      */
     public function fillKnapsack(): Knapsack

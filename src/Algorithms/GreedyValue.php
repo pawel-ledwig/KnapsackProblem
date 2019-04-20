@@ -10,7 +10,7 @@ class GreedyValue extends Algorithm
     }
 
     /**
-     * Method used to fill knapsack - choose best items using greedy algorithm with highest value criteria.
+     * Method used to fill knapsack - choose best items using greedy algorithm with highest value criterion.
      * @return Knapsack
      */
     public function fillKnapsack(): Knapsack
