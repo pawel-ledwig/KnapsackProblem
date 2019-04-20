@@ -12,6 +12,7 @@ class Controller
         $this->filename = $filename;
         $this->capacity = $capacity;
         $this->algorithm = $algorithm;
+        $this->knapsack = null;
     }
 
     /**
@@ -37,4 +38,22 @@ class Controller
     {
         return $this->algorithm;
     }
+
+    /**
+     * @return Knapsack | null
+     */
+    public function getKnapsack()
+    {
+        return $this->knapsack;
+    }
+
+    /**
+     * Used to print message into the standard output.
+     * @param $message
+     */
+    public function printMessage($message): void
+    {
+        echo $message . "\n";
+    }
+
 }
