@@ -1,8 +1,8 @@
 <?php
 
 
-require_once('../src/CLI.php');
-require_once('../src/Controller.php');
+require_once('../src/Controllers/CLI.php');
+require_once('../src/Controllers/Controller.php');
 require_once('../src/Exceptions/MissingArgumentException.php');
 
 use PHPUnit\Framework\TestCase;
