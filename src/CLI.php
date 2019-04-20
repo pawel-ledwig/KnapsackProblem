@@ -65,7 +65,7 @@ class CLI
                         return false;
                     }
                 } else {
-                    // TODO: Command does not exists
+                    $this->printMessage("Skipping unsupported option: -$arg_name");
                 }
             }
         }
