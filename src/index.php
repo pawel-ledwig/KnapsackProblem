@@ -15,4 +15,4 @@ $knapsack = $controller->getKnapsack();
 if (!is_null($knapsack))
     echo $knapsack->toString();
 else
-    echo "Check an error messages and run program again.\n";
+    echo "Program failed. Check an error messages and run program again.\n";
