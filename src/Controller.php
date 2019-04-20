@@ -16,6 +16,30 @@ class Controller
         $this->knapsack = null;
     }
 
+    public function run()
+    {
+        $file_loader = new FileLoader($this->filename);
+        try {
+            $file_loader->loadDataFromFile();
+            $items_data = $file_loader->getItemsData();
+
+            switch($this->algorithm) {
+                case 0:
+                    $algorithm = new GreedyValue($this->capacity, $items_data);
+                    $this->knapsack = $algorithm->fillKnapsack();
+                    break;
+                default:
+                    throw new UnknownAlgorithmException($this->algorithm);
+                    break;
+            }
+
+        } catch (FileNotFoundException $e) {
+            $this->printMessage($e->errorMessage());
+        } catch (UnknownAlgorithmException $e) {
+            $this->printMessage($e->errorMessage());
+        }
+    }
+
     /**
      * @return string
      */
