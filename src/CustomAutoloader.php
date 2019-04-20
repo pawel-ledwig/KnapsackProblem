@@ -11,27 +11,39 @@ class CustomAutoloader
 
     public static function loadStartupClasses($class_name): void
     {
-        spl_autoload($class_name);
+        $filename = $class_name . ".php";
+        if (file_exists($filename)){
+            include $filename;
+        }
     }
 
     public static function loadAlgorithms($class_name): void
     {
         $path = 'Algorithms/';
 
-        spl_autoload($path . '/' . $class_name);
+        $filename = $path . $class_name . ".php";
+        if (file_exists($filename)){
+            include $filename;
+        }
     }
 
     public static function loadControllers($class_name): void
     {
         $path = 'Controllers/';
 
-        spl_autoload($path . '/' . $class_name);
+        $filename = $path . $class_name . ".php";
+        if (file_exists($filename)){
+            include $filename;
+        }
     }
 
     public static function loadExceptions($class_name): void
     {
         $path = 'Exceptions/';
 
-        spl_autoload($path . '/' . $class_name);
+        $filename = $path . $class_name . ".php";
+        if (file_exists($filename)){
+            include $filename;
+        }
     }
 }
