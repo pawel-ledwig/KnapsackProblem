@@ -82,7 +82,7 @@ class CLI
             return;
         }
 
-        switch ($value) {
+        switch ($option_name) {
             case "file":
                 $this->filename = strval($value);
                 break;
