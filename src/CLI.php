@@ -118,6 +118,13 @@ class CLI
 
     private function validateParams(): bool
     {
+        if (!isset($this->filename)) {
+            $this->printMessage("Missing path to the file.");
+        }
+        if (!isset($this->capacity)) {
+            $this->printMessage("Missing knapsack capacity.");
+        }
+
         return (isset($this->filename) === $this->options['file']) &&
             (isset($this->capacity) === $this->options['capacity']);
     }
