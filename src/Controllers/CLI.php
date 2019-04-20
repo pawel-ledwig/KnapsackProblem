@@ -30,18 +30,16 @@ class CLI
 
     /**
      * @param $argv - parameters given during startup of the program
-     * @return bool - true if successfully completed, false if errors occurred.
+     * @throws CLIException
      */
-    public function init($argv): bool
+    public function init($argv): void
     {
         $this->params = $argv;
 
         if ($this->parseParams()) {
             $this->printMessage("Arguments has been parsed successfully.");
-            return true;
         } else {
-            $this->printMessage("An error(s) occurred during parsing arguments. Re-run is required.");
-            return false;
+            throw new CLIException("An error(s) occurred during parsing arguments. Re-run is required.");
         }
     }
 
