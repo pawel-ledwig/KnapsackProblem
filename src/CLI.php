@@ -53,7 +53,12 @@ class CLI
                 if ($this->isOptionSupported($arg_name)) {
                     $option_name = $this->getOptionName($arg_name);
 
-                    $this->parseOption($this->params, $option_name, $i);
+                    try {
+                        $this->parseOption($this->params, $option_name, $i);
+                    } catch (MissingArgumentException $e) {
+                        $this->printMessage($e->errorMessage());
+                        return false;
+                    }
                 } else {
                     // TODO: Command does not exists
                 }
