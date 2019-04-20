@@ -23,6 +23,11 @@ class CLI
         'h' => 'help',
     );
 
+    public function __construct()
+    {
+        $this->algorithm = 0;
+    }
+
     public function init($argv)
     {
         $this->params = $argv;
