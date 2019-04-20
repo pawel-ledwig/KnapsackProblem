@@ -120,7 +120,7 @@ class CLITest extends TestCase
     }
 
     /**
-     * Test missing filename argument (-f parameter in the middle).
+     * Test missing filename argument (-file parameter in the middle).
      */
     public function testCLIWithMissingFilename_v2()
     {
@@ -128,7 +128,7 @@ class CLITest extends TestCase
         $algorithm = 2;
 
         $cli = new CLI();
-        $this->assertEquals($cli->init(['path', 'qwerty', '-f', '-qwerty', '-c', $capacity, '-a', $algorithm, '-s', '-p']), false);
+        $this->assertEquals($cli->init(['path', 'qwerty', '-file', '-qwerty', '-c', $capacity, '-a', $algorithm, '-s', '-p']), false);
     }
 
     /**
