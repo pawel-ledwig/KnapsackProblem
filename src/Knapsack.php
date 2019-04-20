@@ -67,4 +67,11 @@ class Knapsack
 
         return $total_value;
     }
+
+    public function toString(): string
+    {
+        return var_dump($this->knapsack_items) . "\n" .
+            "Total value: " . $this->getKnapsackValue() . "\n" .
+            "Total weight: " . $this->getKnapsackWeight() . "\n";
+    }
 }
