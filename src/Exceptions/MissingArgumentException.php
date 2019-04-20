@@ -13,6 +13,6 @@ class MissingArgumentException extends Exception
     }
 
     public function errorMessage(){
-        return "Missing required value for parameter: -$this->arg";
+        return "Missing required value for given parameter: -$this->arg";
     }
 }
