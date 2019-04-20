@@ -20,7 +20,7 @@ class FileLoader
 
     public function __construct($filepath)
     {
-        $this->filepath = $filepath;
+        $this->filepath = getcwd() . "$filepath";
     }
 
     /**
