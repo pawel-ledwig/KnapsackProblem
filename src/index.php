@@ -2,7 +2,7 @@
 
 
 define('CSV_COLUMNS', 3);
-spl_autoload('CustomAutoloader');
+include('CustomAutoloader.php');
 
 $cli = new CLI();
 $cli->init($_SERVER['argv']);
