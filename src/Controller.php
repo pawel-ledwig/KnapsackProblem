@@ -16,7 +16,10 @@ class Controller
         $this->knapsack = null;
     }
 
-    public function run()
+    /**
+     * Responsible for process of calculating knapsack problem.
+     */
+    public function run(): void
     {
         $file_loader = new FileLoader($this->filename);
         try {
