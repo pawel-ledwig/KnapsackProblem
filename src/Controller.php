@@ -6,6 +6,7 @@ class Controller
     private $filename;
     private $capacity;
     private $algorithm;
+    private $knapsack;
 
     public function __construct($filename, $capacity, $algorithm)
     {
