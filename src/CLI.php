@@ -31,7 +31,14 @@ class CLI
     public function init($argv)
     {
         $this->params = $argv;
-        $this->parseParams();
+
+        if ($this->parseParams()) {
+            $this->printMessage("Arguments has been parsed successfully.");
+            return true;
+        } else {
+            $this->printMessage("An error(s) occurred during parsing arguments. Re-run is required.");
+            return false;
+        }
     }
 
     public function getController()
@@ -64,6 +71,7 @@ class CLI
                 }
             }
         }
+        return $this->validateParams();
     }
 
     private function isOptionSupported(string $arg_name): bool
@@ -101,5 +109,16 @@ class CLI
                 $this->algorithm = intval($value);
                 break;
         }
+    }
+
+    public function printMessage($message): void
+    {
+        echo $message . "\n";
+    }
+
+    private function validateParams(): bool
+    {
+        return (isset($this->filename) === $this->options['file']) &&
+            (isset($this->capacity) === $this->options['capacity']);
     }
 }
