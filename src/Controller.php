@@ -26,7 +26,7 @@ class Controller
             $file_loader->loadDataFromFile();
             $items_data = $file_loader->getItemsData();
 
-            switch($this->algorithm) {
+            switch ($this->algorithm) {
                 case 0:
                     $algorithm = new GreedyValue($this->capacity, $items_data);
                     $this->knapsack = $algorithm->fillKnapsack();
