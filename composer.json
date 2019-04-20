@@ -1,0 +1,16 @@
+{
+  "name": "knapsack_problem",
+  "description": "Solving knapsack problem using greedy algorithms.",
+  "minimum-stability": "stable",
+  "license": "CC 3.0",
+  "authors": [
+    {
+      "name": "Paweł Ledwig",
+      "email": "pawel.ledwig95@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "phpunit/phpunit": "8.1.3"
+  }
+}
