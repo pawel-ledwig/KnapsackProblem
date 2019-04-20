@@ -75,16 +75,14 @@ class CLI
     {
         // if there is no more arguments but option value is required
         if ($i + 1 >= sizeof($params) && $this->options[$option_name]) {
-            // TODO: Missing argument for option $option_name
-            return;
+            throw new MissingArgumentException($option_name);
         }
 
         $value = $params[$i + 1];
 
         // if there is an option in place of value of previous option, but value of previous option is required
         if ($value[0] == '-' && $this->options[$option_name]) {
-            // TODO: Missing argument for option $option_name
-            return;
+            throw new MissingArgumentException($option_name);
         }
 
         switch ($option_name) {
