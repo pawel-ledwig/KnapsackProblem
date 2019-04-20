@@ -28,6 +28,10 @@ class CLI
         $this->algorithm = 0;
     }
 
+    /**
+     * @param $argv - parameters given during startup of the program
+     * @return bool - true if successfully completed, false if errors occurred.
+     */
     public function init($argv): bool
     {
         $this->params = $argv;
@@ -41,11 +45,18 @@ class CLI
         }
     }
 
+    /**
+     * @return Controller
+     */
     public function getController(): Controller
     {
         return new Controller($this->filename, $this->capacity, $this->algorithm);
     }
 
+    /**
+     * Parse all parameters.
+     * @return bool - true if successfully completed, false if errors occurred.
+     */
     private function parseParams(): bool
     {
         // starting from $i = 1 because argv[0] is current path
@@ -72,16 +83,32 @@ class CLI
         return $this->validateParams();
     }
 
+    /**
+     * Check if option is supported in the program.
+     * @param string $arg_name
+     * @return bool
+     */
     private function isOptionSupported(string $arg_name): bool
     {
         return array_key_exists($arg_name, $this->options) || array_key_exists($arg_name, $this->shortcuts);
     }
 
+    /**
+     * @param string $arg_name
+     * @return string - full name of an option
+     */
     private function getOptionName(string $arg_name): string
     {
         return strlen($arg_name) == 1 ? $this->shortcuts[$arg_name] : $arg_name;
     }
 
+    /**
+     * Used to parse single argument: read value if given and throw an exception if required value is missing.
+     * @param array $params - parameters given during startup of the program
+     * @param string $arg_name - name of currently parsing argument
+     * @param int $i - index of $arg_name in $params array
+     * @throws MissingArgumentException
+     */
     private function parseOption(array $params, string $arg_name, int $i): void
     {
         $option_name = $this->getOptionName($arg_name);
@@ -111,11 +138,19 @@ class CLI
         }
     }
 
+    /**
+     * Used to print message into the standard output.
+     * @param $message
+     */
     public function printMessage($message): void
     {
         echo $message . "\n";
     }
 
+    /**
+     * Checking if required fields has been set.
+     * @return bool
+     */
     private function validateParams(): bool
     {
         if (!isset($this->filename)) {
