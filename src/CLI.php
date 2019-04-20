@@ -28,7 +28,7 @@ class CLI
         $this->algorithm = 0;
     }
 
-    public function init($argv)
+    public function init($argv): bool
     {
         $this->params = $argv;
 
@@ -41,12 +41,12 @@ class CLI
         }
     }
 
-    public function getController()
+    public function getController(): Controller
     {
         return new Controller($this->filename, $this->capacity, $this->algorithm);
     }
 
-    private function parseParams()
+    private function parseParams(): bool
     {
         // starting from $i = 1 because argv[0] is current path
         for ($i = 1; $i < sizeof($this->params); $i++) {
