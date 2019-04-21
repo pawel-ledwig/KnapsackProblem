@@ -23,6 +23,13 @@ class CLI
         'h' => 'help',
     );
 
+    private $option_require_parameter = array(
+        'file' => true,
+        'capacity' => true,
+        'algorithm' => true,
+        'help' => false,
+    );
+
     public function __construct()
     {
         $this->algorithm = 0;
@@ -116,11 +123,16 @@ class CLI
             throw new MissingArgumentException($arg_name);
         }
 
-        $value = $params[$i + 1];
+        $value = null;
 
-        // if there is an option in place of value of previous option, but value of previous option is required
-        if ($value[0] == '-' && $this->options[$option_name]) {
-            throw new MissingArgumentException($arg_name);
+        // try to get value only if an option requires it (i.e. help does not require value)
+        if ($this->option_require_parameter[$option_name]) {
+            $value = $params[$i + 1];
+
+            // if there is an option in place of value of previous option, but value of previous option is required
+            if ($value[0] == '-' && $this->options[$option_name]) {
+                throw new MissingArgumentException($arg_name);
+            }
         }
 
         switch ($option_name) {
