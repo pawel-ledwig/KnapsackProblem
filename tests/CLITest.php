@@ -49,6 +49,26 @@ class CLITest extends TestCase
     }
 
     /**
+     * Test params parsing with given filename, capacity and algorithm in proper way, used full name of an option.
+     */
+    public function testCLIWithFilenameCapacityAlgorithmFullName()
+    {
+        $filename = 'sample_filename';
+        $capacity = 1024;
+        $algorithm = 2;
+
+        $cli = new CLI();
+        $cli->init(['path', '--file', $filename, '--capacity', $capacity, '--algorithm', $algorithm]);
+
+        $controller = $cli->getController();
+
+        $this->assertEquals($filename, $controller->getFilename());
+        $this->assertEquals($capacity, $controller->getCapacity());
+        $this->assertEquals($algorithm, $controller->getAlgorithm());
+    }
+
+
+    /**
      * Test params parsing with given filename, capacity and algorithm in proper way.
      * Some unsupported params has been added at the end.
      */
