@@ -4,6 +4,7 @@
 require_once('../src/Controllers/CLI.php');
 require_once('../src/Controllers/Controller.php');
 require_once('../src/Exceptions/MissingArgumentException.php');
+require_once('../src/Exceptions/CLIException.php');
 
 use PHPUnit\Framework\TestCase;
 
@@ -112,11 +113,13 @@ class CLITest extends TestCase
      */
     public function testCLIWithMissingFilename_v1()
     {
+        $this->expectException(CLIException::class);
+
         $capacity = 1024;
         $algorithm = 2;
 
         $cli = new CLI();
-        $this->assertEquals($cli->init(['path', 'qwerty', '-p', '-qwerty', '-c', $capacity, '-a', $algorithm, '-s', '-p', '-f']), false);
+        $cli->init(['path', 'qwerty', '-p', '-qwerty', '-c', $capacity, '-a', $algorithm, '-s', '-p', '-f']);
     }
 
     /**
@@ -124,11 +127,13 @@ class CLITest extends TestCase
      */
     public function testCLIWithMissingFilename_v2()
     {
+        $this->expectException(CLIException::class);
+
         $capacity = 1024;
         $algorithm = 2;
 
         $cli = new CLI();
-        $this->assertEquals($cli->init(['path', 'qwerty', '-file', '-qwerty', '-c', $capacity, '-a', $algorithm, '-s', '-p']), false);
+        $cli->init(['path', 'qwerty', '-file', '-qwerty', '-c', $capacity, '-a', $algorithm, '-s', '-p']);
     }
 
     /**
@@ -136,10 +141,12 @@ class CLITest extends TestCase
      */
     public function testCLIWithMissingFilename_v3()
     {
+        $this->expectException(CLIException::class);
+
         $capacity = 1024;
         $algorithm = 2;
 
         $cli = new CLI();
-        $this->assertEquals($cli->init(['path', 'qwerty', '-qwerty', '-c', $capacity, '-a', $algorithm, '-s', '-p']), false);
+        $cli->init(['path', 'qwerty', '-qwerty', '-c', $capacity, '-a', $algorithm, '-s', '-p']);
     }
 }
