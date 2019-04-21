@@ -133,6 +133,9 @@ class CLI
             case "algorithm":
                 $this->algorithm = intval($value);
                 break;
+            case "help":
+                $this->printHelp();
+                break;
         }
     }
 
@@ -160,5 +163,18 @@ class CLI
 
         return (isset($this->filename) === $this->options['file']) &&
             (isset($this->capacity) === $this->options['capacity']);
+    }
+
+    private function printHelp(): void
+    {
+        $message =
+            "-f\t--file\tpath to file with items.\n" .
+            "-c\t--capacity\tcapacity of the knapsack.\n" .
+            "[-h]\t[--help]\tshow help message.\n" .
+            "[-a]\t[--algorithm]\tAlgorithm\n" .
+            "\t\t0 - Greedy by value (default)\n" .
+            "\t\t1 - Greedy by weight\n" .
+            "\t\t2 - Greedy by ratio\n";
+        echo $message;
     }
 }
