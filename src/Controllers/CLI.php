@@ -72,6 +72,11 @@ class CLI
             if ($arg[0] == '-') {
                 $arg_name = substr($arg, 1);
 
+                // check if option is given by it's full name
+                if ($arg_name[0] == '-') {
+                    $arg_name = substr($arg_name, 1);
+                }
+
                 // check if an option is supported
                 if ($this->isOptionSupported($arg_name)) {
                     try {
