@@ -70,8 +70,12 @@ class Knapsack
 
     public function toString(): string
     {
-        return var_dump($this->knapsack_items) . "\n" .
-            "Total value: " . $this->getKnapsackValue() . "\n" .
-            "Total weight: " . $this->getKnapsackWeight() . "\n";
+        $return_string = "Items in the knapsack:\n";
+        foreach ($this->knapsack_items as $item_id => $item_data) {
+            $return_string .= "ID: $item_id, weight: " . $item_data['weight'] . " value: " . $item_data['value'] . "\n";
+        }
+        return $return_string . "\n" .
+            "Total weight: " . $this->getKnapsackWeight() . "\n" .
+            "Total value: " . $this->getKnapsackValue() . "\n";
     }
 }
